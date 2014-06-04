@@ -9,7 +9,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <description>Cordova Wifi Network Information Plugin</description>
     <license>MIT</license>
     <keywords>cordova,network,information,wifi,manrueda</keywords>
-    <repo>https://github.com/ManRueda/org.apache.cordova.wifiinfo</repo>
+    <repo>https://github.com/gkopevski/PhoneGap-WifiInfoPlugin</repo>
 
     <js-module src="www/cordovaWifiInfo.js" name="wifi">
         <clobbers target="wifi" />
@@ -19,8 +19,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="cordovaWifiInfo">
-                <param name="android-package" value="org.apache.cordova.wifiinfo.cordovaWifiInfo"/>
+            <feature name="WiFiInfo">
+                <param name="android-package" value="org.apache.cordova.wifiinfo.WiFiInfo"/>
             </feature>
         </config-file>
 
@@ -28,10 +28,11 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
         </config-file>
 
-        <source-file src="src/android/cordovaWifiInfo.java" target-dir="src/org/apache/cordova/wifiinfo" />
+        <source-file src="src/android/WiFiInfo.java" target-dir="src/org/apache/cordova/wifiinfo" />
 
     </platform>
     
+    <!-- iOS -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="WiFiInfo">

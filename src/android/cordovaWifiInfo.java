@@ -16,14 +16,14 @@ import java.net.InetAddress;
 import java.util.Arrays;
 import java.lang.StringBuilder;
 
-public class cordovaWifiInfo extends CordovaPlugin { 
+public class WiFiInfo extends CordovaPlugin {
 
-	public cordovaWifiInfo() {
+	public WiFiInfo() {
 	}
 	
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		if (action.equals("getWifiInfo")) {
+		if (action.equals("getInfo")) {
 			Context context = cordova.getActivity().getApplicationContext();
 			PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, this.loadData(context));
 			pluginResult.setKeepCallback(true);
