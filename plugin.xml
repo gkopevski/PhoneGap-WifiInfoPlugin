@@ -38,5 +38,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                 <param name="ios-package" value="WiFiInfo" />
             </feature>
         </config-file>
+        
+        <header-file src="src/ios/WiFiInfo.h" />
+        <source-file src="src/ios/WiFiInfo.m" />
     </platform>
 </plugin>
