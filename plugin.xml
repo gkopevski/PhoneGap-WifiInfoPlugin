@@ -31,4 +31,12 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <source-file src="src/android/cordovaWifiInfo.java" target-dir="src/org/apache/cordova/wifiinfo" />
 
     </platform>
+    
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="WiFiInfo">
+                <param name="ios-package" value="WiFiInfo" />
+            </feature>
+        </config-file>
+    </platform>
 </plugin>
