@@ -16,8 +16,12 @@ API
 
 ### Example 1
 ```javascript
-window.wifi.lan;			//Connected WiFi info
-window.wifi.networks;	    //Array of the visible WiFi networks
+    
+window.wifi(function( data ) {
+    console.log(data);
+    console.log(JSON.stringify(data));
+});
+
 ```
 
 ### Example 2
