@@ -68,7 +68,9 @@ public class WiFiInfo extends CordovaPlugin {
 			lan.put("NetworkId", wifiInfo.getNetworkId());
 			lan.put("RSSI", wifiInfo.getRssi());
 			lan.put("LinkSpeed", wifiInfo.getLinkSpeed());
-			obj.put("lan", lan); 
+			obj.put("lan", lan);
+            obj.put("SSID", lan.get("SSID"));
+			obj.put("BSSID", lan.get("BSSID"));            
 			
 			if(wifiManager.getScanResults() != null){ 
 				JSONArray networks = new JSONArray();

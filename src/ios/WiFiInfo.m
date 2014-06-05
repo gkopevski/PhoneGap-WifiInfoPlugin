@@ -7,16 +7,21 @@
 - (void)getInfo:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = nil;
-
+    
+    
     CFArrayRef myArray = CNCopySupportedInterfaces();
     CFDictionaryRef myDict = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(myArray, 0));
-    NSLog(@"Connected at:%@",myDict);
-    NSDictionary *myDictionary = (__bridge_transfer NSDictionary*)myDict;
+    //NSLog(@"Connected at:%@",myDict);
+    NSDictionary *myDictionary = (__bridge NSDictionary*)myDict;
+    
     NSString * BSSID = [myDictionary objectForKey:@"BSSID"];
-    NSLog(@"bssid is %@",BSSID);
+    NSString * SSID = [myDictionary objectForKey:@"SSID"];
     
+    NSString * response  = [NSString stringWithFormat:@"{ \"BSSID\":\"%@\",\"SSID\":\"%@\" }", BSSID, SSID];
     
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:BSSID];
+    //NSLog(@"RESPONSE: %@",response);
+    
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:response];
     
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
