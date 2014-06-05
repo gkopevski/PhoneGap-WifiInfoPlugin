@@ -23,9 +23,12 @@ API
 ### Example 1
 ```javascript
     
-window.wifi(function( data ) {
-    console.log(JSON.stringify(data));
-});
+    window.wifi(function( data ) {
+        var responseJSON = JSON.parse(data);
+        console.log(responseJSON.SSID);
+        console.log(responseJSON.BSSID);
+    })
+
 
 ```
 
