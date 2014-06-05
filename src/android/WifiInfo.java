@@ -1,31 +1,29 @@
 package org.apache.cordova.wifiinfo;
 
+import java.math.BigInteger;
+import java.net.InetAddress;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Context;
 import android.net.wifi.ScanResult;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import java.math.BigInteger;
-import java.net.InetAddress;
-import java.util.Arrays;
-import java.lang.StringBuilder;
 
-public class WiFiInfo extends CordovaPlugin {
-
-	public WiFiInfo() {
+public class WifiInfo extends CordovaPlugin {
+    
+	public WifiInfo() {
 	}
 	
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if (action.equals("getInfo")) {
 			Context context = cordova.getActivity().getApplicationContext();
-			PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, this.loadData(context));
+			PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, this.loadData(context).toString());
 			pluginResult.setKeepCallback(true);
 			callbackContext.sendPluginResult(pluginResult);
 			return true;
@@ -46,7 +44,7 @@ public class WiFiInfo extends CordovaPlugin {
 				j--;
 				i++;
 			}
-		
+            
 			return InetAddress.getByAddress(bytes).toString().replace("/", "");
 		} catch (Exception e) {
 			return "";
@@ -55,7 +53,7 @@ public class WiFiInfo extends CordovaPlugin {
 	
 	private JSONObject loadData(Context context) {
 		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-		WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+		android.net.wifi.WifiInfo wifiInfo = wifiManager.getConnectionInfo();
 		JSONObject obj = new JSONObject();
 		try {
 			JSONObject lan = new JSONObject();
@@ -70,9 +68,9 @@ public class WiFiInfo extends CordovaPlugin {
 			lan.put("LinkSpeed", wifiInfo.getLinkSpeed());
 			obj.put("lan", lan);
             obj.put("SSID", lan.get("SSID"));
-			obj.put("BSSID", lan.get("BSSID"));            
+			obj.put("BSSID", lan.get("BSSID"));
 			
-			if(wifiManager.getScanResults() != null){ 
+			if(wifiManager.getScanResults() != null){
 				JSONArray networks = new JSONArray();
 				for (ScanResult scanResult : wifiManager.getScanResults()) {
 					JSONObject ap = new JSONObject();
@@ -84,7 +82,7 @@ public class WiFiInfo extends CordovaPlugin {
 					ap.put("capabilities", scanResult.capabilities);
 					networks.put(ap);
 				}
-				obj.put("networks", networks); 
+				obj.put("networks", networks);
 			}
 		} catch (Exception e) {
 			
