@@ -1,6 +1,10 @@
 Cordova WifiInfoPlugin
-	* iOS support (getting information from connected wireless network)
-	* Android support (like iOS plus info about other networks that are in range)
+
+==============
+
+* iOS support (getting information from connected wireless network)
+* Android support (like iOS plus info about other networks that are in range)
+
 ==============
 
 * License - The MIT License
