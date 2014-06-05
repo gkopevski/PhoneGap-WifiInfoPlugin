@@ -9,7 +9,7 @@ Install Step (Cordova CLI)
 --------------------------
 
 ### 
-	cordova plugin add https://github.com/HondaDai/PhoneGap-WifiInfoPlugin
+	cordova plugin add https://github.com/gkopevski/PhoneGap-WifiInfoPlugin
 
 API
 -----
@@ -18,7 +18,6 @@ API
 ```javascript
     
 window.wifi(function( data ) {
-    console.log(data);
     console.log(JSON.stringify(data));
 });
 
