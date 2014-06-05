@@ -23,20 +23,18 @@ window.wifi(function( data ) {
 
 ```
 
-### Example 2
-```javascript
-window.wifi.refresh();
-```
-
-Special Thanks
+Special Thanks for Android version to
 -----
 
 * [ManRueda](https://github.com/ManRueda/org.apache.cordova.wifiinfo)
+* [HondaDai](https://github.com/HondaDai/PhoneGap-WifiInfoPlugin)
 
 
 
 Changelog
 -----
+* 2014/6/03
+  * Added ios support for getting the info from connected wifi (SSID,MAC address)
 * 2014/4/17 
   * Change wifi object structure
   * Fix SSID string format
