@@ -20,7 +20,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="WiFiInfo">
-                <param name="android-package" value="org.apache.cordova.wifiinfo.WiFiInfo"/>
+                <param name="android-package" value="org.apache.cordova.wifiinfo.WifiInfo"/>
             </feature>
         </config-file>
 
@@ -28,19 +28,19 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
         </config-file>
 
-        <source-file src="src/android/WiFiInfo.java" target-dir="src/org/apache/cordova/wifiinfo" />
+        <source-file src="src/android/WifiInfo.java" target-dir="src/org/apache/cordova/wifiinfo" />
 
     </platform>
     
     <!-- iOS -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="WiFiInfo">
+            <feature name="WifiInfo">
                 <param name="ios-package" value="WiFiInfo" />
             </feature>
         </config-file>
         
-        <header-file src="src/ios/WiFiInfo.h" />
-        <source-file src="src/ios/WiFiInfo.m" />
+        <header-file src="src/ios/WifiInfo.h" />
+        <source-file src="src/ios/WifiInfo.m" />
     </platform>
 </plugin>
