@@ -1,6 +1,6 @@
 #import <Cordova/CDV.h>
 
-@interface WiFiInfo :  CDVPlugin
+@interface WifiInfo :  CDVPlugin
 
 - (void)getInfo:(CDVInvokedUrlCommand*)command
 
