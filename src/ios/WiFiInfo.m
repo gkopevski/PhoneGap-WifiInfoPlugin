@@ -1,8 +1,8 @@
-#import "WiFiInfo.h"
+#import "WifiInfo.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <Cordova/CDV.h>
 
-@implementation WiFiInfo
+@implementation WifiInfo
 
 - (void)getInfo:(CDVInvokedUrlCommand*)command
 {
