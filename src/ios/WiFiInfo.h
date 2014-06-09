@@ -2,6 +2,6 @@
 
 @interface WifiInfo : CDVPlugin
 
-- (void)getInfo:(CDVInvokedUrlCommand*)command
+- (void)getInfo:(CDVInvokedUrlCommand*)command;
 
 @end
