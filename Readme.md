@@ -28,6 +28,10 @@ API
         console.log(responseJSON.SSID);
         console.log(responseJSON.BSSID);
     })
+    window.getSavedWifiNetworks(function( data ) {
+        console.log("SAVED WIFI NETWORKS: " + data);
+        var responseJSON = JSON.parse(data);
+    })
 
 
 ```
@@ -42,6 +46,8 @@ Special Thanks for Android version to
 
 Changelog
 -----
+* 2014/6/18
+  * Added option to get saved networks from Android 
 * 2014/6/03
   * Added ios support for getting the info from connected wifi (SSID,MAC address)
 * 2014/4/17 
