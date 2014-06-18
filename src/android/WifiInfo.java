@@ -2,6 +2,7 @@ package org.apache.cordova.wifiinfo;
 
 import java.math.BigInteger;
 import java.net.InetAddress;
+import java.util.List;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -12,6 +13,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 
 public class WifiInfo extends CordovaPlugin {
@@ -27,10 +29,39 @@ public class WifiInfo extends CordovaPlugin {
 			pluginResult.setKeepCallback(true);
 			callbackContext.sendPluginResult(pluginResult);
 			return true;
+		}else if(action.equals("getSavedWifiNetworks")){
+			Context context = cordova.getActivity().getApplicationContext();
+			PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, this.getSavedWifiNetworks(context).toString());
+			pluginResult.setKeepCallback(true);
+			callbackContext.sendPluginResult(pluginResult);
+			return true;
 		}
 		return false;
 	}
 	
+	private JSONObject getSavedWifiNetworks(Context context) {
+		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		List<WifiConfiguration> listSavedNetworks = wifiManager.getConfiguredNetworks();
+		JSONObject obj = new JSONObject();
+		JSONArray savedWifiNetworks = new JSONArray();
+		for (WifiConfiguration wifiConfiguration : listSavedNetworks) {
+			JSONObject ap = new JSONObject();
+			try {
+				ap.put("BSSID", wifiConfiguration.BSSID);
+				ap.put("SSID", wifiConfiguration.SSID);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			savedWifiNetworks.put(ap);
+		}
+		try {
+			obj.put("savedWifiNetworks", savedWifiNetworks);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+    
 	private String parseIP (int intIP) {
 		try {
 			byte[] bytes = BigInteger.valueOf(intIP).toByteArray();
