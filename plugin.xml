@@ -19,7 +19,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="WiFiInfo">
+            <feature name="WifiInfo">
                 <param name="android-package" value="org.apache.cordova.wifiinfo.WifiInfo"/>
             </feature>
         </config-file>
