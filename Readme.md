@@ -8,7 +8,7 @@ Cordova WifiInfoPlugin
 ==============
 
 * License - The MIT License
-* Test on Cordova 3.4.0
+* Test on Cordova 3.6.3
 
 
 Install Step (Cordova CLI)
@@ -23,12 +23,12 @@ API
 ### Example 1
 ```javascript
     
-    window.wifi(function( data ) {
+    wifi.wifi(function( data ) {
         var responseJSON = JSON.parse(data);
         console.log(responseJSON.SSID);
         console.log(responseJSON.BSSID);
     })
-    window.getSavedWifiNetworks(function( data ) {
+    wifi.getSavedWifiNetworks(function( data ) {
         console.log("SAVED WIFI NETWORKS: " + data);
         var responseJSON = JSON.parse(data);
     })
