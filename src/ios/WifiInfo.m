@@ -6,8 +6,16 @@
 
 - (void)getInfo:(CDVInvokedUrlCommand*)command
 {
+    
     CDVPluginResult* pluginResult = nil;
     
+#if TARGET_IPHONE_SIMULATOR
+    
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"{ \"BSSID\":\"polarcape\",\"SSID\":\"polarcape\" }"];
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
+#else
     
     CFArrayRef myArray = CNCopySupportedInterfaces();
     CFDictionaryRef myDict = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(myArray, 0));
@@ -24,6 +32,11 @@
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:response];
     
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
+#endif
+    
+    
+
 }
 
 @end
